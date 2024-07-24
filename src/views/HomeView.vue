@@ -1,13 +1,19 @@
 <script setup lang="ts">
 import AddTodo from "@/components/AddTodo.vue";
 import TodoList from "@/components/TodoList.vue";
+import {tour} from "@/utilities/driver";
+
+
 </script>
 
 <template>
     <main class="content-wrapper">
-        <add-todo></add-todo>
+        <button @click="tour()">Explain me my task</button>
+        <div class="add-todo">
+            <add-todo ></add-todo>
+        </div>
 
-        <todo-list></todo-list>
+        <todo-list class="todo-list"></todo-list>
     </main>
 </template>
 

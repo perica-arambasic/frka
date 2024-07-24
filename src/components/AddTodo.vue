@@ -23,44 +23,45 @@ function updateCurrentTodo(value: any) {
 }
 
 .todo-input {
-    width: 300px; /* Adjust width as needed */
-    height: 40px; /* Adjust height as needed */
-    border: 2px solid white; /* White border */
-    border-radius: 20px; /* Rounded corners */
-    padding: 10px; /* Padding inside the input */
-    font-size: 16px; /* Font size for text inside the input */
-    outline: none; /* Remove default outline on focus */
-    box-sizing: border-box; /* Ensure padding and border are included in the width and height */
+    width: 300px;
+    height: 40px;
+    border: 2px solid white;
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 16px;
+    outline: none;
+    box-sizing: border-box;
     font-family: "Comic Sans MS",serif;
-    background: var(--vt-c-black);
+    background: var(--vt-c-black-mute);
     color: white;
 }
 
 .todo-input:focus {
-    border-color: #ccc; /* Change border color on focus, optional */
-    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Add a slight shadow on focus, optional */
+    border-color: #ccc;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    filter: contrast(200%);
 }
 
 .todo-button {
-    width: 100px; /* Adjust width as needed */
-    height: 40px; /* Same height as the input */
-    border: 2px solid white; /* White border */
-    border-radius: 20px; /* Rounded corners to match the input */
-    padding: 10px; /* Padding inside the button */
-    font-size: 16px; /* Font size for text inside the button */
-    font-family: "Comic Sans MS", serif; /* Matching font family */
-    background: var(--vt-c-black); /* Matching background color */
-    color: white; /* White text color */
-    cursor: pointer; /* Pointer cursor on hover */
-    outline: none; /* Remove default outline */
-    box-sizing: border-box; /* Ensure padding and border are included in the width and height */
-    text-align: center; /* Center the text inside the button */
-    display: inline-block; /* Ensure it behaves like a button */
-    transition: background-color 0.3s ease; /* Smooth transition for background color change */
+    width: 100px;
+    height: 40px;
+    border: 2px solid white;
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 16px;
+    font-family: "Comic Sans MS", serif;
+    background: var(--vt-c-black-mute);
+    color: white;
+    cursor: pointer;
+    outline: none;
+    box-sizing: border-box;
+    text-align: center;
+    display: inline-block;
+    transition: background-color 0.3s ease;
 }
 
+
 .todo-button:hover {
-    background: white; /* Change background color on hover */
-    color: var(--vt-c-black); /* Change text color on hover */
+    filter: contrast(200%);
 }
 </style>

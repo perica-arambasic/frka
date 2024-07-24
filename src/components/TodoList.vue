@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import {useTodoStore} from "@/stores/todo";
+import router from "@/router";
 
 let todoStore = useTodoStore();
 </script>
 
 <template>
     <div>
-        <div v-for="todo in todoStore.todos" :key="todo.id" class="todo-item">
+        <div v-for="todo in todoStore.todos" :key="todo.content" class="todo-item">
             <div class="todo-content">
-                <p>{{ todo.content }}</p>
+                <router-link :to="{name: 'todo', params: {id: todo.id}}">{{ todo.content }}</router-link>
                 <p class="todo-completed">
                     {{ todo.completed ? 'Completed' : 'Not Completed' }}
                     <i :class="todo.completed ? 'fas fa-check-circle' : 'fas fa-times-circle'"></i>
@@ -26,27 +27,33 @@ let todoStore = useTodoStore();
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%; /* Full width to accommodate the flex layout */
-    padding: 10px; /* Padding inside the card */
-    border: 2px solid white; /* White border */
-    border-radius: 20px; /* Rounded corners */
-    background: var(--vt-c-black); /* Matching background color */
-    color: white; /* White text color */
-    font-family: "Comic Sans MS", serif; /* Matching font family */
-    box-sizing: border-box; /* Ensure padding and border are included in the width */
-    margin-bottom: 10px; /* Space between cards */
-    font-size: 16px; /* Font size for todo text */
+    width: 100%;
+    padding: 10px;
+    border: 2px solid white;
+    border-radius: 20px;
+    background: var(--vt-c-black-mute);
+    color: white;
+    font-family: "Comic Sans MS", serif;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    font-size: 16px;
+    transition: transform 0.2s ease;
+}
+
+.todo-item:hover {
+    transform: translateX(15px);
+    filter: contrast(200%);
 }
 
 .todo-content {
-    flex: 1; /* Take up available space */
-    margin: 0; /* Remove default margin */
+    flex: 1;
+    margin: 0;
 }
 
 .todo-completed {
-    margin: 0; /* Remove default margin */
-    font-style: italic; /* Italicize completed status */
-    opacity: 0.7; /* Slightly dim the completed status */
+    margin: 0;
+    font-style: italic;
+    opacity: 0.7;
     display: flex;
     align-items: center;
 }
@@ -65,8 +72,7 @@ let todoStore = useTodoStore();
 }
 
 .todo-button i {
-    color: red; /* Set color for the garbage icon */
-    font-size: 20px; /* Adjust size for the icon */
+    color: red;
+    font-size: 20px;
 }
-
 </style>
