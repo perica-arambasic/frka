@@ -1,17 +1,39 @@
 <script setup lang="ts">
 import {ref} from "vue";
+import {useTodoStore} from "@/stores/todo";
+import type { Todo } from "@/stores/todo";
 
-let todo = ref('')
+let todo = ref('');
+const todoStore = useTodoStore();
 
-function updateCurrentTodo(value: any) {
-    todo.value = value;
+function updateCurrentTodo(value: Event) {
+    if (value instanceof InputEvent) {
+        const target = value.target as HTMLInputElement;
+        todo.value = target.value;
+    }
+    
 }
+
+function addTodo() {
+    if (todo.value) {
+        const newTodo: Todo = {
+            id: (todoStore.todos.length + 1).toString(),
+            content: todo.value,
+            completed: false
+        }
+
+        todoStore.addTodo(newTodo);
+        todo.value = '';
+    }
+}
+
+
 </script>
 
 <template>
     <form class="form-wrapper">
-        <input class="todo-input" type="text" @input="updateCurrentTodo($event)">
-        <button type="submit" class="todo-button">Add</button>
+        <input class="todo-input" type="text" v-model="todo">
+        <button type="submit" class="todo-button" @click.prevent="addTodo">Add</button>
     </form>
 
     <div>{{todo}}</div>

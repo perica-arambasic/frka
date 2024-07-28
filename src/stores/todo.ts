@@ -21,6 +21,12 @@ export const useTodoStore = defineStore('counter', () => {
     function addTodo(t: Todo): void {
         todos.value.push(t);
     }
+    function removeTodo(id: string) {
+        const index = todos.value.findIndex(todo => todo.id === id);
+        if (index >= 0) {
+            todos.value.splice(index, 1);
+        }
+    }
 
-    return {todos, completedTodos, getTodoById, addTodo}
+    return {todos, completedTodos, getTodoById, addTodo, removeTodo}
 })

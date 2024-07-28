@@ -3,6 +3,10 @@ import {useTodoStore} from "@/stores/todo";
 import router from "@/router";
 
 let todoStore = useTodoStore();
+
+function deleteTodo(id: number) {
+
+}
 </script>
 
 <template>
@@ -15,7 +19,7 @@ let todoStore = useTodoStore();
                     <i :class="todo.completed ? 'fas fa-check-circle' : 'fas fa-times-circle'"></i>
                 </p>
             </div>
-            <button class="todo-button" @click="">
+            <button class="todo-button" @click="todoStore.removeTodo(todo.id)">
                 <i class="fas fa-trash-alt"></i>
             </button>
         </div>
